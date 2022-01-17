@@ -3,7 +3,7 @@ import React from 'react'
 const Weather = (props) => {
     return (
         <div className="container">
-            <div className="cadrs">
+            <div className="cadrs h-75">
                 <h2>{props.city}</h2>
                 <h5 className="py-4">
                     <i className={`wi ${props.weatherIcon} display-1`}></i>
