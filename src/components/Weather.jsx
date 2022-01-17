@@ -26,6 +26,5 @@ function minmaxTemp(min, max) {
             </h3>
         )
     }
-
 }
 export default Weather;

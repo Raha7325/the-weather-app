@@ -59,48 +59,44 @@ class App extends React.Component {
       case rangeId >= 801 && rangeId <= 804:
         this.setState({ icon: this.weatherIcon.Clouds })
         break;
-        default:
-          this.setState({icon:this.weatherIcon.Clouds})
+      default:
+        this.setState({ icon: this.weatherIcon.Clouds })
     }
   }
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
-   if(city && country){
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`);
-    const response = await api_call.json();
-    console.log(response)
-
-    this.setState({
-      city: `${response.name},${response.sys.country}`,
-      celsius: this.calcCelsius(response.main.temp),
-      temp_max: this.calcCelsius(response.main.temp_max),
-      temp_min: this.calcCelsius(response.main.temp_min),
-      description: response.weather[0].description,
-      error:false,
-
-
-    })
-    this.get_WeatherIcon(this.weatherIcon, response.weather[0].id)
-   }else{
-     this.setState({error:true})
-   }
+    if (city && country) {
+      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_Key}`);
+      const response = await api_call.json();
+      console.log(response)
+      this.setState({
+        city: `${response.name},${response.sys.country}`,
+        celsius: this.calcCelsius(response.main.temp),
+        temp_max: this.calcCelsius(response.main.temp_max),
+        temp_min: this.calcCelsius(response.main.temp_min),
+        description: response.weather[0].description,
+        error: false,
+      })
+      this.get_WeatherIcon(this.weatherIcon, response.weather[0].id)
+    } else {
+      this.setState({ error: true })
+    }
   }
   render() {
     return (
       <div className="App">
-        <Form  loadweather={this.getWeather} error={this.state.error}/>
-        <Weather
-          city={this.state.city}
-          country={this.state.country}
-          temp_celsius={this.state.celsius}
-          temp_min={this.state.temp_min}
-          temp_max={this.state.temp_max}
-          description={this.state.description}
-          weatherIcon={this.state.icon}
-
-        />
+          <Form loadweather={this.getWeather} error={this.state.error} />
+          <Weather
+            city={this.state.city}
+            country={this.state.country}
+            temp_celsius={this.state.celsius}
+            temp_min={this.state.temp_min}
+            temp_max={this.state.temp_max}
+            description={this.state.description}
+            weatherIcon={this.state.icon}
+          />
       </div>
     )
   }

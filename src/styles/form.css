@@ -1,15 +1,15 @@
 form{
-    margin-top: 3rem;
+    padding: 20px;
 }
 form input[name="city"],
 form input[name="country"]{
     background-color: transparent;
     color:#f77;
-    border-bottom: 2px solid tomato !important;
+    border-bottom: 2px solid blue !important;
     border-radius: 0;
     border:0;
 }
 form input:focus{
     box-shadow: none !important;
-    background-color: transparent;
+    background-color: transparent !important;
 }

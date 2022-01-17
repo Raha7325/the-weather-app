@@ -23,7 +23,7 @@ const Form =props => {
 }
 const error = () => {
     return(
-        <div className="alert alert-danger mx-5" role="alert">
+        <div className="alert alert-danger" role="alert">
             Please Enter City and Country
         </div>
     )
